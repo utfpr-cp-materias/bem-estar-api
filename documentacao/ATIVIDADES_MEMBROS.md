@@ -11,7 +11,7 @@
 | Nome | RA | Responsabilidade |
 |------|-----|------------------|
 | Antônio Augusto Polizel Passeto | 2600897 | Backend + Banco de Dados |
-| Gabriel Pereira Garcia | 2600935 | Frontend |
+| Gabriel Pereira Garcia | 2600935 | Backend + Banco de Dados |
 | Maria Luísa Paulo Palácios | 2538920 | UI/UX + Documentação |
 | Octávio Luís Conejo de Moraes | 2268108 | Frontend |
 | Taynara Luísa Pecorario | 1914154 | Testes + QA |
@@ -28,7 +28,7 @@
 │   ┌─────────────────────┐           ┌─────────────────────┐                │
 │   │  Antônio Augusto    │           │  Gabriel Pereira    │                │
 │   │     (2600897)       │           │     (2600935)       │                │
-│   │   Backend + BD      │           │     Frontend        │                │
+│   │   Backend + BD      │           │   Backend + BD      │                │
 │   └─────────────────────┘           └─────────────────────┘                │
 │                                                                              │
 │   ┌─────────────────────┐           ┌─────────────────────┐                │
@@ -149,43 +149,44 @@ docs: documentação completa da API REST
 ---
 
 ## Gabriel Pereira Garcia (RA: 2600935)
-### Responsabilidade: Frontend
+### Responsabilidade: Backend + Banco de Dados
 
 ### Responsabilidades
-- Desenvolvimento das telas principais (React)
-- Integração com a API
-- Componentes reutilizáveis
-- Gerenciamento de estado
+- Desenvolvimento da API REST (Node.js + Express)
+- Modelagem e implementação do banco de dados (PostgreSQL)
+- Autenticação e segurança (JWT)
+- Integração com frontend
 
 ### Atividades Desenvolvidas
 
 | Atividade | Status | Data | Evidência |
 |-----------|--------|------|-----------|
-| Setup do projeto React + Vite + TypeScript | ✅ Concluído | XX/04 | `frontend/package.json` |
-| Configuração Tailwind CSS | ✅ Concluído | XX/04 | `tailwind.config.js` |
-| Componentes base (Button, Input, Card) | ✅ Concluído | XX/04 | `src/components/` |
-| Tela de Login | ✅ Concluído | XX/04 | `src/pages/Login.tsx` |
-| Tela de Cadastro | ✅ Concluído | XX/04 | `src/pages/Register.tsx` |
-| Context de autenticação | ✅ Concluído | XX/04 | `src/contexts/AuthContext.tsx` |
-| Serviço de API (Axios) | ✅ Concluído | XX/04 | `src/services/api.ts` |
-| Tela de Questionário | 🔄 Em andamento | - | `src/pages/Questionnaire.tsx` |
-| Tela de Dashboard | 🔄 Em andamento | - | `src/pages/Dashboard.tsx` |
-| Integração completa com API | 🔄 Em andamento | - | - |
+| Estruturação do projeto Node.js + TypeScript | ✅ Concluído | 07/05 | `package.json`, `tsconfig.json` |
+| Configuração do Prisma ORM | ✅ Concluído | 07/05 | `prisma/schema.prisma` |
+| Modelagem do banco de dados (13 tabelas) | ✅ Concluído | 07/05 | `prisma/schema.prisma` |
+| Implementação módulo Auth (JWT) | ✅ Concluído | 07/05 | `src/services/auth.service.ts` |
+| Implementação módulo Usuários | ✅ Concluído | 07/05 | `src/services/user.service.ts` |
+| Implementação módulo Questionário | ✅ Concluído | 07/05 | `src/services/questionnaire.service.ts` |
+| Implementação módulo Emoções + Check-in | ✅ Concluído | 07/05 | `src/services/emotion.service.ts` |
+| Implementação módulo Metas | ✅ Concluído | 07/05 | `src/services/goal.service.ts` |
+| Middlewares (Auth, Validation, Error) | ✅ Concluído | 07/05 | `src/middlewares/` |
+| Seed de dados iniciais | ✅ Concluído | 07/05 | `prisma/seed.ts` |
+| Integração com frontend | 🔄 Em andamento | - | - |
 
 ### Commits no GitHub
 
 ```
-feat: setup inicial React + Vite + TypeScript
-feat: configuração Tailwind CSS e tema
-feat: componentes base (Button, Input, Card, Modal)
-feat: tela de login com validação
-feat: tela de cadastro
-feat: context de autenticação
-feat: serviço de API com Axios
-feat: roteamento com React Router
+feat: estrutura inicial do projeto backend (Node.js + TypeScript)
+feat: configuração do Prisma ORM e schema do banco de dados
+feat: implementação do módulo de autenticação com JWT
+feat: implementação do módulo de usuários
+feat: implementação do módulo de questionário de onboarding
+feat: implementação do módulo de emoções e check-in diário
+feat: implementação do módulo de metas com tracking de progresso
+feat: seed com dados iniciais (perguntas, emoções, recursos)
 ```
 
-### Horas Trabalhadas: ~XX horas
+### Horas Trabalhadas: ~40 horas
 
 ---
 
@@ -313,7 +314,7 @@ feat: tela de seleção de emoções
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                  │
 │   Backend (Antônio)    [████████████████████░░░░]  85%          │
-│   Frontend (Gabriel)   [████████████░░░░░░░░░░░░]  50%          │
+│   Backend (Gabriel)    [████████████████████░░░░]  85%          │
 │   Frontend (Octávio)   [████████░░░░░░░░░░░░░░░░]  35%          │
 │   UI/UX (Maria Luísa)  [██████████████████████░░]  90%          │
 │   Testes (Taynara)     [████░░░░░░░░░░░░░░░░░░░░]  15%          │

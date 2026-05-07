@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roteiro Vídeo Fase 2 - App Bem Estar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: #fff;
+        }
+
+        h1 {
+            text-align: center;
+            color: #6B46C1;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .header-info {
+            background: #F3E8FF;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .header-info p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            page-break-inside: avoid;
+        }
+
+        .section-title {
+            background: #6B46C1;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 6px 6px 0 0;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .section-content {
+            border: 2px solid #6B46C1;
+            border-top: none;
+            padding: 20px;
+            border-radius: 0 0 6px 6px;
+        }
+
+        .person-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .antonio {
+            background: #3B82F6;
+            color: white;
+        }
+
+        .gabriel {
+            background: #10B981;
+            color: white;
+        }
+
+        .ambos {
+            background: #8B5CF6;
+            color: white;
+        }
+
+        .fala {
+            background: #F9FAFB;
+            border-left: 4px solid #6B46C1;
+            padding: 15px;
+            margin: 10px 0;
+            font-style: italic;
+        }
+
+        .tempo {
+            background: #FEF3C7;
+            color: #92400E;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .mostrar {
+            background: #DBEAFE;
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .mostrar strong {
+            color: #1E40AF;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background: #F3F4F6;
+        }
+
+        .cola {
+            background: #FEF3C7;
+            border: 2px solid #F59E0B;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .cola h3 {
+            color: #92400E;
+            margin-bottom: 15px;
+        }
+
+        .cola ul {
+            margin-left: 20px;
+        }
+
+        .cola li {
+            margin: 8px 0;
+        }
+
+        .checklist {
+            background: #ECFDF5;
+            border: 2px solid #10B981;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .checklist h3 {
+            color: #065F46;
+            margin-bottom: 15px;
+        }
+
+        .checklist label {
+            display: block;
+            margin: 8px 0;
+            cursor: pointer;
+        }
+
+        .checklist input {
+            margin-right: 10px;
+        }
+
+        .divider {
+            border-top: 2px dashed #CBD5E1;
+            margin: 30px 0;
+        }
+
+        @media print {
+            body {
+                padding: 20px;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>🎬 Roteiro do Vídeo - Fase 2</h1>
+    <p class="subtitle">App Bem Estar - Plataforma de Monitoramento de Saúde Mental</p>
+
+    <div class="header-info">
+        <p><strong>Disciplina:</strong> Projeto de Software - UTFPR-CP</p>
+        <p><strong>Data de Entrega:</strong> 15/05/2026</p>
+        <p><strong>Duração do Vídeo:</strong> 4-5 minutos</p>
+        <p><strong>Apresentadores:</strong></p>
+        <p>• <span class="person-tag antonio">Antônio Augusto</span> RA: 2600897 - Backend + Banco de Dados</p>
+        <p>• <span class="person-tag gabriel">Gabriel Pereira</span> RA: 2600935 - Backend + Banco de Dados</p>
+    </div>
+
+    <!-- PARTE 1 -->
+    <div class="section">
+        <div class="section-title">1. INTRODUÇÃO <span class="tempo">30 segundos</span></div>
+        <div class="section-content">
+            <span class="person-tag ambos">ANTÔNIO + GABRIEL</span>
+
+            <div class="fala">
+                <strong>Antônio:</strong> "Olá! Somos da equipe do App Bem Estar. Eu sou Antônio Augusto, RA 2600897."
+            </div>
+
+            <div class="fala">
+                <strong>Gabriel:</strong> "E eu sou Gabriel Pereira, RA 2600935."
+            </div>
+
+            <div class="fala">
+                <strong>Antônio:</strong> "Nós ficamos responsáveis pelo desenvolvimento do backend e banco de dados da aplicação."
+            </div>
+
+            <div class="fala">
+                <strong>Gabriel:</strong> "Vamos apresentar o que desenvolvemos até o momento."
+            </div>
+
+            <div class="mostrar">
+                <strong>📺 Mostrar na tela:</strong> Ambos aparecem (pode ser lado a lado ou um de cada vez)
+            </div>
+        </div>
+    </div>
+
+    <!-- PARTE 2 -->
+    <div class="section">
+        <div class="section-title">2. VISÃO GERAL DO PROJETO <span class="tempo">30 segundos</span></div>
+        <div class="section-content">
+            <span class="person-tag gabriel">GABRIEL</span>
+
+            <div class="fala">
+                "O App Bem Estar é uma plataforma para monitoramento de saúde mental."
+            </div>
+
+            <div class="fala">
+                "O usuário pode fazer check-ins diários de humor, registrar suas emoções, definir metas de autocuidado e acompanhar seu bem-estar através de relatórios."
+            </div>
+
+            <div class="mostrar">
+                <strong>📺 Mostrar na tela:</strong> Figma com as telas principais (Login, Questionário, Dashboard)
+            </div>
+        </div>
+    </div>
+
+    <!-- PARTE 3 -->
+    <div class="section">
+        <div class="section-title">3. TECNOLOGIAS DO BACKEND <span class="tempo">40 segundos</span></div>
+        <div class="section-content">
+            <span class="person-tag antonio">ANTÔNIO</span>
+
+            <div class="fala">
+                "Para o backend, utilizamos as seguintes tecnologias:"
+            </div>
+
+            <div class="fala">
+                <ul style="margin: 10px 0 10px 20px;">
+                    <li><strong>Node.js</strong> com <strong>Express</strong> - para criar a API REST</li>
+                    <li><strong>TypeScript</strong> - para tipagem estática e maior segurança</li>
+                    <li><strong>Prisma ORM</strong> - para comunicação com o banco de dados</li>
+                    <li><strong>PostgreSQL</strong> - como banco de dados relacional</li>
+                    <li><strong>JWT</strong> - para autenticação dos usuários</li>
+                </ul>
+            </div>
+
+            <div class="mostrar">
+                <strong>📺 Mostrar na tela:</strong> README.md ou slide com tecnologias
+            </div>
+        </div>
+    </div>
+
+    <!-- PARTE 4 -->
+    <div class="section">
+        <div class="section-title">4. ARQUITETURA DO BACKEND <span class="tempo">50 segundos</span></div>
+        <div class="section-content">
+            <span class="person-tag gabriel">GABRIEL</span>
+
+            <div class="fala">
+                "Agora vou mostrar como organizamos a estrutura do projeto."
+            </div>
+
+            <div class="fala">
+                "Seguimos uma arquitetura em camadas:"
+                <ul style="margin: 10px 0 10px 20px;">
+                    <li><strong>Routes</strong> - define os endpoints da API</li>
+                    <li><strong>Controllers</strong> - recebe as requisições e valida os dados</li>
+                    <li><strong>Services</strong> - contém a lógica de negócio</li>
+                    <li><strong>Middlewares</strong> - autenticação JWT e validação</li>
+                </ul>
+            </div>
+
+            <div class="fala">
+                "A API possui <strong>7 módulos</strong>: autenticação, usuários, questionário, emoções, metas, relatórios e recursos de autoajuda."
+            </div>
+
+            <div class="mostrar">
+                <strong>📺 Mostrar na tela:</strong><br>
+                1. VS Code com a pasta <code>src/</code> expandida<br>
+                2. Arquivo <code>src/routes/index.ts</code> mostrando os 7 módulos
+            </div>
+        </div>
+    </div>
+
+    <!-- PARTE 5 -->
+    <div class="section">
+        <div class="section-title">5. BANCO DE DADOS <span class="tempo">1 minuto</span></div>
+        <div class="section-content">
+            <span class="person-tag antonio">ANTÔNIO</span>
+
+            <div class="fala">
+                "Agora vou mostrar a modelagem do banco de dados. Criamos <strong>13 tabelas</strong> para atender todas as funcionalidades do app."
+            </div>
+
+            <div class="fala">
+                "As principais tabelas são:"
+                <ul style="margin: 10px 0 10px 20px;">
+                    <li><strong>User</strong> - dados dos usuários com senha criptografada</li>
+                    <li><strong>Question</strong> e <strong>QuestionnaireResponse</strong> - questionário inicial com 8 perguntas</li>
+                    <li><strong>Emotion</strong> e <strong>EmotionRecord</strong> - catálogo de 20 emoções e registros</li>
+                    <li><strong>DailyCheckIn</strong> - check-in diário de humor, energia e sono</li>
+                    <li><strong>Goal</strong> e <strong>GoalProgress</strong> - metas de autocuidado</li>
+                    <li><strong>Report</strong> - relatórios semanais e mensais com insights</li>
+                </ul>
+            </div>
+
+            <span class="person-tag gabriel" style="margin-top: 15px; display: inline-block;">GABRIEL</span>
+
+            <div class="fala">
+                "Também criamos tabelas de <strong>recursos de autoajuda</strong> com técnicas de respiração e meditação, e <strong>contatos de emergência</strong> como o CVV - 188."
+            </div>
+
+            <div class="mostrar">
+                <strong>📺 Mostrar na tela:</strong><br>
+                Arquivo <code>prisma/schema.prisma</code> - scrollar mostrando as tabelas principais
+            </div>
+        </div>
+    </div>
+
+    <!-- PARTE 6 -->
+    <div class="section">
+        <div class="section-title">6. CONCLUSÃO <span class="tempo">30 segundos</span></div>
+        <div class="section-content">
+            <span class="person-tag ambos">ANTÔNIO + GABRIEL</span>
+
+            <div class="fala">
+                <strong>Gabriel:</strong> "O backend está desenvolvido e testado. Todos os endpoints da API estão funcionando."
+            </div>
+
+            <div class="fala">
+                <strong>Antônio:</strong> "O código está disponível no GitHub da equipe. Para a Fase 3, vamos trabalhar na integração com o frontend."
+            </div>
+
+            <div class="fala">
+                <strong>Gabriel:</strong> "Obrigado pela atenção!"
+            </div>
+
+            <div class="mostrar">
+                <strong>📺 Mostrar na tela:</strong> Ambos aparecem para encerrar
+            </div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- RESUMO -->
+    <h2 style="color: #6B46C1; margin-bottom: 20px;">📋 Resumo da Divisão</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Parte</th>
+                <th>Quem fala</th>
+                <th>Tempo</th>
+                <th>O que mostrar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1. Introdução</td>
+                <td>Ambos</td>
+                <td>30s</td>
+                <td>Rostos</td>
+            </tr>
+            <tr>
+                <td>2. Visão Geral</td>
+                <td style="color: #10B981; font-weight: bold;">Gabriel</td>
+                <td>30s</td>
+                <td>Figma</td>
+            </tr>
+            <tr>
+                <td>3. Tecnologias</td>
+                <td style="color: #3B82F6; font-weight: bold;">Antônio</td>
+                <td>40s</td>
+                <td>README/Slide</td>
+            </tr>
+            <tr>
+                <td>4. Arquitetura</td>
+                <td style="color: #10B981; font-weight: bold;">Gabriel</td>
+                <td>50s</td>
+                <td>VS Code - src/</td>
+            </tr>
+            <tr>
+                <td>5. Banco de Dados</td>
+                <td>Ambos</td>
+                <td>1 min</td>
+                <td>schema.prisma</td>
+            </tr>
+            <tr>
+                <td>6. Conclusão</td>
+                <td>Ambos</td>
+                <td>30s</td>
+                <td>Rostos</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr style="background: #F3E8FF;">
+                <td colspan="2"><strong>TOTAL</strong></td>
+                <td colspan="2"><strong>~4 minutos</strong></td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <div class="divider"></div>
+
+    <!-- COLA ANTÔNIO -->
+    <div class="cola">
+        <h3>📝 Cola Rápida - ANTÔNIO</h3>
+        <ul>
+            <li>"Sou Antônio Augusto, RA 2600897"</li>
+            <li>"Ficamos responsáveis pelo backend e banco de dados"</li>
+            <li><strong>Tecnologias:</strong> "Node.js, Express, TypeScript, Prisma, PostgreSQL, JWT"</li>
+            <li><strong>Banco:</strong> "13 tabelas - User, Question, Emotion, DailyCheckIn, Goal, Report..."</li>
+            <li><strong>Final:</strong> "Código no GitHub, próximo passo é integração com frontend"</li>
+        </ul>
+    </div>
+
+    <!-- COLA GABRIEL -->
+    <div class="cola" style="border-color: #10B981; background: #ECFDF5;">
+        <h3 style="color: #065F46;">📝 Cola Rápida - GABRIEL</h3>
+        <ul>
+            <li>"Sou Gabriel Pereira, RA 2600935"</li>
+            <li><strong>Visão Geral:</strong> "App para monitoramento de saúde mental - check-ins, emoções, metas, relatórios"</li>
+            <li><strong>Arquitetura:</strong> "Camadas: routes, controllers, services, middlewares"</li>
+            <li><strong>Módulos:</strong> "7 módulos na API"</li>
+            <li><strong>Banco:</strong> "Recursos de autoajuda e contatos de emergência como CVV"</li>
+            <li><strong>Final:</strong> "Backend testado, endpoints funcionando"</li>
+        </ul>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- CHECKLIST -->
+    <div class="checklist">
+        <h3>✅ Checklist Antes de Gravar</h3>
+        <label><input type="checkbox"> VS Code aberto com o projeto backend</label>
+        <label><input type="checkbox"> Aba com <code>src/routes/index.ts</code></label>
+        <label><input type="checkbox"> Aba com <code>prisma/schema.prisma</code></label>
+        <label><input type="checkbox"> Figma aberto com as telas (opcional)</label>
+        <label><input type="checkbox"> Câmera funcionando</label>
+        <label><input type="checkbox"> Microfone testado</label>
+        <label><input type="checkbox"> Ambiente silencioso</label>
+        <label><input type="checkbox"> Roteiro impresso ou em segunda tela</label>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px; color: #666; font-size: 12px;">
+        <p>App Bem Estar - UTFPR Campus Cornélio Procópio - Maio/2026</p>
+        <p>Equipe: Antônio, Gabriel, Maria Luísa, Octávio, Taynara</p>
+    </div>
+
+</body>
+</html>
