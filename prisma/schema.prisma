@@ -1,0 +1,292 @@
+// Prisma Schema - App Bem Estar
+// Plataforma de Monitoramento de Saúde Mental
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ==================== USUÁRIOS ====================
+
+model User {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  password      String
+  name          String
+  birthDate     DateTime?
+  phone         String?
+  avatarUrl     String?
+  isActive      Boolean   @default(true)
+  onboardingCompleted Boolean @default(false)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relacionamentos
+  questionnaireResponses QuestionnaireResponse[]
+  emotionRecords         EmotionRecord[]
+  goals                  Goal[]
+  dailyCheckIns          DailyCheckIn[]
+  reports                Report[]
+
+  @@map("users")
+}
+
+// ==================== QUESTIONÁRIO INICIAL (ONBOARDING) ====================
+
+model Question {
+  id          String   @id @default(uuid())
+  text        String   // Ex: "Com que frequência você se sente bem emocionalmente?"
+  description String?  // Descrição adicional se necessário
+  category    QuestionCategory
+  order       Int      // Ordem de exibição
+  minValue    Int      @default(1)
+  maxValue    Int      @default(10)
+  minLabel    String   @default("Raramente")
+  maxLabel    String   @default("Sempre")
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relacionamentos
+  responses   QuestionnaireResponse[]
+
+  @@map("questions")
+}
+
+enum QuestionCategory {
+  EMOTIONAL_WELLBEING    // Bem-estar emocional
+  ANXIETY                // Ansiedade/mente acelerada
+  STRESS                 // Sobrecarga/estresse
+  MOOD                   // Humor/tristeza
+  ENERGY                 // Nível de energia
+  CONCENTRATION          // Concentração
+  SOCIAL                 // Solidão/conexão social
+  IMPROVEMENT_GOALS      // O que deseja melhorar
+}
+
+model QuestionnaireResponse {
+  id         String   @id @default(uuid())
+  userId     String
+  questionId String
+  value      Int      // Valor na escala (1-10)
+  answeredAt DateTime @default(now())
+
+  // Relacionamentos
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  question Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, questionId, answeredAt])
+  @@map("questionnaire_responses")
+}
+
+// ==================== REGISTRO DE EMOÇÕES ====================
+
+model Emotion {
+  id          String   @id @default(uuid())
+  name        String   // Ex: "Ansiedade", "Felicidade", "Tristeza"
+  icon        String?  // Emoji ou ícone
+  color       String   // Cor hex para exibição
+  category    EmotionCategory
+  description String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+
+  // Relacionamentos
+  records     EmotionRecord[]
+
+  @@map("emotions")
+}
+
+enum EmotionCategory {
+  POSITIVE    // Emoções positivas (felicidade, gratidão, etc.)
+  NEGATIVE    // Emoções negativas (tristeza, raiva, etc.)
+  NEUTRAL     // Emoções neutras
+}
+
+model EmotionRecord {
+  id         String   @id @default(uuid())
+  userId     String
+  emotionId  String
+  intensity  Int      @default(5) // Intensidade 1-10
+  notes      String?  // Anotações opcionais
+  recordedAt DateTime @default(now())
+
+  // Relacionamentos
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  emotion Emotion @relation(fields: [emotionId], references: [id], onDelete: Cascade)
+
+  @@map("emotion_records")
+}
+
+// ==================== CHECK-IN DIÁRIO ====================
+
+model DailyCheckIn {
+  id              String   @id @default(uuid())
+  userId          String
+  date            DateTime @db.Date
+  overallMood     Int      // Humor geral 1-10
+  energyLevel     Int?     // Nível de energia 1-10
+  sleepQuality    Int?     // Qualidade do sono 1-10
+  anxietyLevel    Int?     // Nível de ansiedade 1-10
+  notes           String?  // Anotações do dia
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // Relacionamentos
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, date])
+  @@map("daily_checkins")
+}
+
+// ==================== METAS ====================
+
+model Goal {
+  id          String     @id @default(uuid())
+  userId      String
+  title       String     // Ex: "Meditar por 10 minutos"
+  description String?
+  category    GoalCategory
+  frequency   GoalFrequency
+  targetValue Int?       // Valor alvo (ex: 10 minutos)
+  unit        String?    // Unidade (ex: "minutos")
+  isActive    Boolean    @default(true)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  // Relacionamentos
+  user     User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  progress GoalProgress[]
+
+  @@map("goals")
+}
+
+enum GoalCategory {
+  MEDITATION       // Meditação
+  EXERCISE         // Exercício físico
+  SLEEP            // Sono
+  SOCIAL           // Conexão social
+  MINDFULNESS      // Atenção plena
+  SELF_CARE        // Autocuidado
+  THERAPY          // Terapia/acompanhamento
+  OTHER            // Outros
+}
+
+enum GoalFrequency {
+  DAILY            // Diária
+  WEEKLY           // Semanal
+  MONTHLY          // Mensal
+}
+
+model GoalProgress {
+  id          String   @id @default(uuid())
+  goalId      String
+  date        DateTime @db.Date
+  completed   Boolean  @default(false)
+  value       Int?     // Valor alcançado
+  notes       String?
+  createdAt   DateTime @default(now())
+
+  // Relacionamentos
+  goal Goal @relation(fields: [goalId], references: [id], onDelete: Cascade)
+
+  @@unique([goalId, date])
+  @@map("goal_progress")
+}
+
+// ==================== RELATÓRIOS ====================
+
+model Report {
+  id              String       @id @default(uuid())
+  userId          String
+  type            ReportType
+  periodStart     DateTime
+  periodEnd       DateTime
+  overallScore    Float?       // Score geral calculado
+  category        ReportCategory? // Categoria baseada no score (verde, amarelo, etc.)
+  insights        Json?        // Insights gerados
+  recommendations Json?        // Recomendações
+  createdAt       DateTime     @default(now())
+
+  // Relacionamentos
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("reports")
+}
+
+enum ReportType {
+  WEEKLY           // Semanal
+  MONTHLY          // Mensal
+  ONBOARDING       // Após questionário inicial
+}
+
+enum ReportCategory {
+  EXCELLENT        // Verde - Excelente
+  GOOD             // Verde claro - Bom
+  MODERATE         // Amarelo - Moderado
+  ATTENTION        // Laranja - Atenção necessária
+  CRITICAL         // Vermelho - Crítico, buscar ajuda
+}
+
+// ==================== RECURSOS DE AUTOAJUDA ====================
+
+model Resource {
+  id          String         @id @default(uuid())
+  title       String
+  description String?
+  type        ResourceType
+  content     String?        // Conteúdo ou URL
+  imageUrl    String?
+  category    ResourceCategory
+  tags        String[]
+  isActive    Boolean        @default(true)
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  @@map("resources")
+}
+
+enum ResourceType {
+  ARTICLE          // Artigo
+  VIDEO            // Vídeo
+  EXERCISE         // Exercício interativo
+  AUDIO            // Áudio/podcast
+  BREATHING        // Exercício de respiração
+  MEDITATION       // Meditação guiada
+}
+
+enum ResourceCategory {
+  STRESS_RELIEF    // Redução de estresse
+  MINDFULNESS      // Atenção plena
+  ANXIETY          // Ansiedade
+  DEPRESSION       // Depressão
+  SLEEP            // Sono
+  RELATIONSHIPS    // Relacionamentos
+  SELF_ESTEEM      // Autoestima
+  GENERAL          // Geral
+}
+
+// ==================== CONTATOS DE EMERGÊNCIA ====================
+
+model EmergencyContact {
+  id          String   @id @default(uuid())
+  name        String   // Ex: "CVV - Centro de Valorização da Vida"
+  phone       String   // Ex: "188"
+  description String?
+  type        ContactType
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+
+  @@map("emergency_contacts")
+}
+
+enum ContactType {
+  HOTLINE          // Linha de apoio 24h
+  CHAT             // Chat online
+  EMERGENCY        // Emergência (SAMU, etc.)
+  SUPPORT_GROUP    // Grupo de apoio
+}
