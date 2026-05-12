@@ -37,7 +37,6 @@ backend/
 ### 1. Instalar dependências
 
 ```bash
-cd backend
 npm install
 ```
 
