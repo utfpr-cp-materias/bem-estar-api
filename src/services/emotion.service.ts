@@ -1,5 +1,4 @@
 import { prisma } from '../config';
-import { EmotionCategory } from '@prisma/client';
 
 interface RecordEmotionData {
   emotionId: string;
@@ -22,18 +21,6 @@ export class EmotionService {
     const emotions = await prisma.emotion.findMany({
       where: { isActive: true },
       orderBy: [{ category: 'asc' }, { name: 'asc' }],
-    });
-
-    return emotions;
-  }
-
-  async getEmotionsByCategory(category: EmotionCategory) {
-    const emotions = await prisma.emotion.findMany({
-      where: {
-        isActive: true,
-        category,
-      },
-      orderBy: { name: 'asc' },
     });
 
     return emotions;

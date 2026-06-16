@@ -1,5 +1,5 @@
 import { prisma } from '../config';
-import { QuestionCategory, ReportCategory, ReportType } from '@prisma/client';
+import { QuestionCategory, ReportCategory } from '@prisma/client';
 import { calculateOverallScore, categorizeScore } from '../utils/scoreCalculator';
 
 interface AnswerData {

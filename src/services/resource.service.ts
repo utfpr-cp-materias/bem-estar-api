@@ -28,30 +28,6 @@ export class ResourceService {
     return resource;
   }
 
-  async getResourcesByCategory(category: ResourceCategory) {
-    const resources = await prisma.resource.findMany({
-      where: {
-        category,
-        isActive: true,
-      },
-      orderBy: { createdAt: 'desc' },
-    });
-
-    return resources;
-  }
-
-  async getResourcesByType(type: ResourceType) {
-    const resources = await prisma.resource.findMany({
-      where: {
-        type,
-        isActive: true,
-      },
-      orderBy: { createdAt: 'desc' },
-    });
-
-    return resources;
-  }
-
   async searchResources(query: string) {
     const resources = await prisma.resource.findMany({
       where: {

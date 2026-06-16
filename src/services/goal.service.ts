@@ -219,17 +219,6 @@ export class GoalService {
     };
   }
 
-  async getGoalsByCategory(userId: string, category: GoalCategory) {
-    const goals = await prisma.goal.findMany({
-      where: {
-        userId,
-        category,
-        isActive: true,
-      },
-    });
-
-    return goals;
-  }
 }
 
 export const goalService = new GoalService();

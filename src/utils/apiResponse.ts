@@ -58,13 +58,6 @@ export const sendUnauthorized = (
   return sendError(res, message, 401);
 };
 
-export const sendForbidden = (
-  res: Response,
-  message: string = 'Acesso negado'
-): Response => {
-  return sendError(res, message, 403);
-};
-
 export const sendServerError = (
   res: Response,
   message: string = 'Erro interno do servidor'
