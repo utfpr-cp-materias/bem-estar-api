@@ -1,5 +1,6 @@
 import { prisma } from '../config';
 import { QuestionCategory, ReportCategory, ReportType } from '@prisma/client';
+import { calculateOverallScore, categorizeScore } from '../utils/scoreCalculator';
 
 interface AnswerData {
   questionId: string;
@@ -102,48 +103,8 @@ export class QuestionnaireService {
       },
     });
 
-    // Calcular score geral (média normalizada)
-    // Perguntas negativas (ansiedade, estresse, tristeza) são invertidas
-    const negativeCategories: QuestionCategory[] = [
-      'ANXIETY',
-      'STRESS',
-      'MOOD',
-      'SOCIAL',
-    ];
-
-    let totalScore = 0;
-    let count = 0;
-
-    for (const answer of answers) {
-      const question = questions.find((q) => q.id === answer.questionId);
-      if (!question) continue;
-
-      let normalizedValue = answer.value;
-
-      // Inverter valores para categorias negativas (maior valor = pior)
-      if (negativeCategories.includes(question.category)) {
-        normalizedValue = 11 - answer.value; // Inverte escala 1-10
-      }
-
-      totalScore += normalizedValue;
-      count++;
-    }
-
-    const averageScore = count > 0 ? totalScore / count : 5;
-
-    // Determinar categoria baseada no score
-    let category: ReportCategory;
-    if (averageScore >= 8) {
-      category = 'EXCELLENT';
-    } else if (averageScore >= 6.5) {
-      category = 'GOOD';
-    } else if (averageScore >= 5) {
-      category = 'MODERATE';
-    } else if (averageScore >= 3.5) {
-      category = 'ATTENTION';
-    } else {
-      category = 'CRITICAL';
-    }
+    const averageScore = calculateOverallScore(answers, questions);
+    const category = categorizeScore(averageScore);
 
     // Gerar insights baseados nas respostas
     const insights = this.generateInsights(answers, questions);
