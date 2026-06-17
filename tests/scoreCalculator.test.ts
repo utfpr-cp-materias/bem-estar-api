@@ -3,6 +3,7 @@ import {
   categorizeScore,
   isNegativeCategory,
   normalizeValue,
+  isValidAnswerValue,
   NEGATIVE_CATEGORIES,
 } from '../src/utils/scoreCalculator';
 import { QuestionCategory } from '@prisma/client';
@@ -37,6 +38,20 @@ describe('scoreCalculator', () => {
     it('preserva o ponto médio (5.5) após inversão', () => {
       const mid = 5.5;
       expect(normalizeValue(mid, 'STRESS')).toBe(mid);
+    });
+  });
+
+  describe('isValidAnswerValue', () => {
+    it('aceita valores dentro do range 1-10', () => {
+      expect(isValidAnswerValue(1)).toBe(true);
+      expect(isValidAnswerValue(10)).toBe(true);
+      expect(isValidAnswerValue(5.5)).toBe(true);
+    });
+
+    it('rejeita valores fora do range 1-10', () => {
+      expect(isValidAnswerValue(0)).toBe(false);
+      expect(isValidAnswerValue(11)).toBe(false);
+      expect(isValidAnswerValue(-3)).toBe(false);
     });
   });
 
@@ -91,6 +106,14 @@ describe('scoreCalculator', () => {
     it('retorna 5 quando nenhuma resposta casa com perguntas conhecidas', () => {
       const answers = [{ questionId: 'fantasma', value: 10 }];
       expect(calculateOverallScore(answers, questions)).toBe(5);
+    });
+    
+    it('ignora respostas com valor fora do range válido', () => {
+      const answers = [
+        { questionId: 'q1', value: 8 },
+        { questionId: 'q2', value: 15 },
+      ];
+      expect(calculateOverallScore(answers, questions)).toBe(8);
     });
   });
 
