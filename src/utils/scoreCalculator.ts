@@ -7,6 +7,9 @@ export const NEGATIVE_CATEGORIES: QuestionCategory[] = [
   'SOCIAL',
 ];
 
+const MIN_VALUE = 1;
+const MAX_VALUE = 10;
+
 export interface AnswerInput {
   questionId: string;
   value: number;
@@ -19,6 +22,9 @@ export interface QuestionInput {
 
 export const isNegativeCategory = (category: QuestionCategory): boolean =>
   NEGATIVE_CATEGORIES.includes(category);
+
+export const isValidAnswerValue = (value: number): boolean =>
+  value >= MIN_VALUE && value <= MAX_VALUE;
 
 export const normalizeValue = (value: number, category: QuestionCategory): number =>
   isNegativeCategory(category) ? 11 - value : value;
@@ -35,6 +41,7 @@ export const calculateOverallScore = (
   for (const answer of answers) {
     const question = questions.find((q) => q.id === answer.questionId);
     if (!question) continue;
+    if (!isValidAnswerValue(answer.value)) continue;
     totalScore += normalizeValue(answer.value, question.category);
     count++;
   }
