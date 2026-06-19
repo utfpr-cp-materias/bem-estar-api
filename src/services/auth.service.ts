@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
+import jwt, { SignOptions } from 'jsonwebtoken';
 import { prisma, env } from '../config';
 
 interface RegisterData {
@@ -30,7 +30,7 @@ export class AuthService {
     return jwt.sign(
       { userId, email },
       env.jwtSecret,
-      { expiresIn: env.jwtExpiresIn }
+      { expiresIn: env.jwtExpiresIn as SignOptions['expiresIn'] }
     );
   }
 
