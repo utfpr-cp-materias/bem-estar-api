@@ -141,7 +141,12 @@ export class ReportService {
       orderBy: { createdAt: 'desc' },
     });
 
-    return report;
+    if (report) return report;
+
+    if (type === 'WEEKLY') return this.generateWeeklyReport(userId);
+    if (type === 'MONTHLY') return this.generateMonthlyReport(userId);
+
+    return null;
   }
 
   private determineCategory(score: number): ReportCategory {
