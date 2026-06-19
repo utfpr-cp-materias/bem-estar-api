@@ -8,8 +8,9 @@ export const submitAnswersValidation = [
   body('answers')
     .isArray({ min: 1 }).withMessage('Respostas são obrigatórias'),
   body('answers.*.questionId')
-    .notEmpty().withMessage('ID da pergunta é obrigatório')
-    .isUUID().withMessage('ID da pergunta inválido'),
+    .isString().withMessage('ID da pergunta inválido')
+    .trim()
+    .notEmpty().withMessage('ID da pergunta é obrigatório'),
   body('answers.*.value')
     .notEmpty().withMessage('Valor da resposta é obrigatório')
     .isInt({ min: 1, max: 10 }).withMessage('Valor deve ser entre 1 e 10'),

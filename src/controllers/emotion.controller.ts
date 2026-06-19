@@ -6,8 +6,9 @@ import { sendSuccess, sendCreated, sendError, sendServerError } from '../utils';
 
 export const recordEmotionValidation = [
   body('emotionId')
-    .notEmpty().withMessage('ID da emoção é obrigatório')
-    .isUUID().withMessage('ID da emoção inválido'),
+    .isString().withMessage('ID da emoção inválido')
+    .trim()
+    .notEmpty().withMessage('ID da emoção é obrigatório'),
   body('intensity')
     .optional()
     .isInt({ min: 1, max: 10 }).withMessage('Intensidade deve ser entre 1 e 10'),
@@ -21,8 +22,9 @@ export const recordMultipleEmotionsValidation = [
   body('emotions')
     .isArray({ min: 1 }).withMessage('Emoções são obrigatórias'),
   body('emotions.*.emotionId')
-    .notEmpty().withMessage('ID da emoção é obrigatório')
-    .isUUID().withMessage('ID da emoção inválido'),
+    .isString().withMessage('ID da emoção inválido')
+    .trim()
+    .notEmpty().withMessage('ID da emoção é obrigatório'),
   body('emotions.*.intensity')
     .optional()
     .isInt({ min: 1, max: 10 }).withMessage('Intensidade deve ser entre 1 e 10'),
