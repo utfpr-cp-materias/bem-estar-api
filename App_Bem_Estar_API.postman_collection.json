@@ -1,0 +1,272 @@
+{
+  "info": {
+    "name": "App Bem Estar API",
+    "description": "API para plataforma de monitoramento de saúde mental",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    },
+    {
+      "key": "token",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Health & Info",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/health"
+          }
+        },
+        {
+          "name": "API Info",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Registrar Usuario",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/auth/register",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Usuario Teste\",\n  \"email\": \"teste@exemplo.com\",\n  \"password\": \"123456\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/auth/login",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"teste@exemplo.com\",\n  \"password\": \"123456\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Perfil do Usuario",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/auth/profile",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Questionario",
+      "item": [
+        {
+          "name": "Listar Perguntas",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/questionnaire/questions"
+          }
+        },
+        {
+          "name": "Enviar Respostas",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/questionnaire/submit",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"answers\": [\n    {\"questionId\": \"ID_PERGUNTA_1\", \"value\": 7},\n    {\"questionId\": \"ID_PERGUNTA_2\", \"value\": 4}\n  ]\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Emocoes",
+      "item": [
+        {
+          "name": "Listar Emocoes",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/emotions/list",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Registrar Emocao",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/emotions/record",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"emotionId\": \"ID_EMOCAO\",\n  \"intensity\": 7,\n  \"notes\": \"Me senti bem hoje\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Check-in Diario",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/emotions/checkin",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"overallMood\": 7,\n  \"energyLevel\": 6,\n  \"sleepQuality\": 8,\n  \"anxietyLevel\": 3,\n  \"notes\": \"Dia produtivo\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Metas",
+      "item": [
+        {
+          "name": "Listar Metas",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/goals",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Criar Meta",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/goals",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Meditar 10 minutos\",\n  \"description\": \"Meditacao diaria pela manha\",\n  \"category\": \"MEDITATION\",\n  \"frequency\": \"DAILY\",\n  \"targetValue\": 10,\n  \"unit\": \"minutos\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Relatorios",
+      "item": [
+        {
+          "name": "Gerar Relatorio Semanal",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/reports/weekly",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Listar Relatorios",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/reports",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Recursos",
+      "item": [
+        {
+          "name": "Listar Recursos",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/resources"
+          }
+        },
+        {
+          "name": "Contatos de Emergencia",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/resources/emergency"
+          }
+        }
+      ]
+    }
+  ]
+}
