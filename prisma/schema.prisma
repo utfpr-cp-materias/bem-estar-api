@@ -290,3 +290,24 @@ enum ContactType {
   EMERGENCY        // Emergência (SAMU, etc.)
   SUPPORT_GROUP    // Grupo de apoio
 }
+
+// ==================== SUPORTE / FEEDBACK DO USUÁRIO ====================
+
+model SupportTicket {
+  id        String              @id @default(uuid())
+  userId    String
+  message   String
+  status    SupportTicketStatus @default(OPEN)
+  createdAt DateTime            @default(now())
+  updatedAt DateTime            @updatedAt
+
+  @@index([userId])
+  @@map("support_tickets")
+}
+
+enum SupportTicketStatus {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+  CLOSED
+}

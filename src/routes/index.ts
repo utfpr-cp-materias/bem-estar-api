@@ -6,6 +6,7 @@ import emotionRoutes from './emotion.routes';
 import goalRoutes from './goal.routes';
 import reportRoutes from './report.routes';
 import resourceRoutes from './resource.routes';
+import supportRoutes from './support.routes';
 
 const router = Router();
 
@@ -17,5 +18,6 @@ router.use('/emotions', emotionRoutes);
 router.use('/goals', goalRoutes);
 router.use('/reports', reportRoutes);
 router.use('/resources', resourceRoutes);
+router.use('/support', supportRoutes);
 
 export default router;
