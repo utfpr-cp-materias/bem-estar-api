@@ -13,6 +13,7 @@
     "prisma:seed": "tsx prisma/seed.ts",
     "prisma:seed:realistic": "tsx prisma/seed-realistic.ts",
     "prisma:seed:team": "tsx prisma/seed-team.ts",
+    "prisma:seed:articles": "tsx prisma/seed-articles.ts",
     "db:reset": "prisma migrate reset --force",
     "test": "jest",
     "test:watch": "jest --watch",
