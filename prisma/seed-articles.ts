@@ -19,6 +19,8 @@ const articles = [
       'Entenda o conceito biopsicossocial de saúde mental, como funciona a Rede de Atenção Psicossocial (RAPS) e os desafios do estigma. Conteúdo do Ministério da Saúde.',
     type: 'ARTICLE' as const,
     category: 'GENERAL' as const,
+    imageUrl:
+      'https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/s/saude-mental/saude-mental/@@govbr.institucional.banner/d9fb67cd-8bdc-41db-a2d4-4d6bd7f36634/@@images/b3af1923-d92a-473a-9136-566aeeb5e6c7.png',
     tags: ['saúde mental', 'SUS', 'RAPS', 'CAPS', 'bem-estar', 'estigma'],
     content: `A saúde mental não se limita apenas ao que sentimos individualmente. Ela é uma rede de fatores relacionados. De acordo com a Organização Mundial de Saúde (OMS), a Saúde Mental pode ser considerada um estado de bem-estar vivido pelo indivíduo, que possibilita o desenvolvimento de suas habilidades pessoais para responder aos desafios da vida e contribuir com a comunidade.
 
@@ -66,6 +68,8 @@ Fonte: Ministério da Saúde — gov.br. Disponível em: https://www.gov.br/saud
       'Visão geral da depressão: prevalência, causas, fatores de risco, sintomas, diagnóstico, subtipos, tratamento e prevenção. Conteúdo do Ministério da Saúde.',
     type: 'ARTICLE' as const,
     category: 'DEPRESSION' as const,
+    imageUrl:
+      'https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/d/depressao/depressao/@@govbr.institucional.banner/c4b8dc25-381e-498e-9658-bb792094fa7f/@@images/18651ff1-8d7e-4d0a-968c-fd87d5306552.png',
     tags: ['depressão', 'sintomas', 'tratamento', 'prevenção', 'saúde mental'],
     content: `A depressão é uma doença mental de elevada prevalência e é a mais associada ao suicídio; tende a ser crônica e recorrente, principalmente quando não é tratada. É um problema médico grave e altamente prevalente na população em geral. De acordo com estudo epidemiológico, a prevalência de depressão ao longo da vida no Brasil está em torno de 15,5%. Segundo a OMS, a prevalência de depressão na rede de atenção primária de saúde é de 10,4%, isoladamente ou associada a um transtorno físico.
 
@@ -142,6 +146,8 @@ Fonte: Ministério da Saúde — gov.br. Disponível em: https://www.gov.br/saud
       'Relato de experiência da RAPS sobre como um grupo de atividade física promove bem-estar biopsicossocial em idosos. Iniciativa Nós na Rede (Fiocruz / Ministério da Saúde).',
     type: 'ARTICLE' as const,
     category: 'GENERAL' as const,
+    imageUrl:
+      'https://brasilia.fiocruz.br/nosnarede/wp-content/uploads/sites/10/2025/01/20240919_084826-scaled.jpg',
     tags: ['atividade física', 'idosos', 'socialização', 'prevenção', 'saúde mental'],
     content: `Autoras: Adriana Cláudia de Faria Costa e Aline Cardoso de Almeida
 Local: Unidade de Saúde da Família Jardim Aeroporto — Marília/SP
