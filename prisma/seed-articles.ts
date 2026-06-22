@@ -69,7 +69,7 @@ Fonte: Ministério da Saúde — gov.br. Disponível em: https://www.gov.br/saud
     type: 'ARTICLE' as const,
     category: 'DEPRESSION' as const,
     imageUrl:
-      'https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/d/depressao/depressao/@@govbr.institucional.banner/c4b8dc25-381e-498e-9658-bb792094fa7f/@@images/18651ff1-8d7e-4d0a-968c-fd87d5306552.png',
+      'https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/d/depressao/depressao/@@govbr.institucional.banner/fec4975e-68c4-4a13-b2ad-7491df609484/@@images/cfb6462b-c46d-4db9-ac13-35bd6305b6ba.png',
     tags: ['depressão', 'sintomas', 'tratamento', 'prevenção', 'saúde mental'],
     content: `A depressão é uma doença mental de elevada prevalência e é a mais associada ao suicídio; tende a ser crônica e recorrente, principalmente quando não é tratada. É um problema médico grave e altamente prevalente na população em geral. De acordo com estudo epidemiológico, a prevalência de depressão ao longo da vida no Brasil está em torno de 15,5%. Segundo a OMS, a prevalência de depressão na rede de atenção primária de saúde é de 10,4%, isoladamente ou associada a um transtorno físico.
 
