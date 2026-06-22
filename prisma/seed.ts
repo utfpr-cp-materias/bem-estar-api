@@ -27,7 +27,7 @@ async function seedQuestions() {
     { text: 'Como está seu nível de energia na maior parte dos dias?', description: 'Avalie sua energia e disposição', category: 'ENERGY' as const, order: 5, minLabel: 'Muito baixo', maxLabel: 'Muito alto' },
     { text: 'O quanto você tem dificuldade para se concentrar?', description: 'Avalie sua capacidade de foco', category: 'CONCENTRATION' as const, order: 6, minLabel: 'Nenhuma', maxLabel: 'Muita' },
     { text: 'Com que frequência você se sente sozinho(a)?', description: 'Avalie sua conexão social', category: 'SOCIAL' as const, order: 7, minLabel: 'Raramente', maxLabel: 'Sempre' },
-    { text: 'O que você gostaria de melhorar agora?', description: 'Selecione áreas de foco para melhoria', category: 'IMPROVEMENT_GOALS' as const, order: 8, minLabel: 'Pouco importante', maxLabel: 'Muito importante' },
+    { text: 'Quanto você sente que está conseguindo lidar com os desafios do dia a dia?', description: 'Avalie sua capacidade de lidar com os desafios do dia a dia', category: 'IMPROVEMENT_GOALS' as const, order: 8, minLabel: 'Nunca', maxLabel: 'Sempre' },
   ];
 
   for (const q of questions) {
