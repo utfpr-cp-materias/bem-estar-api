@@ -27,6 +27,11 @@ const mapping: { title: string; imageUrl: string; foto: string }[] = [
     imageUrl: driveImg('1piU0wuwfV1C-h5DdxdkLt-fRlVWPsV19'),
     foto: 'mulher sentada ao ar livre',
   },
+  {
+    title: 'Diário de Autoestima',
+    imageUrl: 'https://images.pexels.com/photos/27102013/pexels-photo-27102013.jpeg',
+    foto: 'imagem do Pexels (autoestima)',
+  },
 ];
 
 async function main() {
